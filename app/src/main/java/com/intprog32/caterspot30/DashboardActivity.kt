@@ -13,9 +13,12 @@ import com.intprog32.caterspot30.Adapters.CatererAdapter
 import com.intprog32.caterspot30.Data.CatererData
 
 class DashboardActivity : Activity() {
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
+
+        val settingIcon =  findViewById<ImageView>(R.id.nav_settings)
 
         val recyclerView = findViewById<RecyclerView>(R.id.caterer_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
@@ -30,11 +33,12 @@ class DashboardActivity : Activity() {
 
         val caterers = listOf(
             CatererData("ABC Catering", "Sea food and more.", R.drawable.sampleseafood),
-            CatererData("XYZ Catering", "Buffet specialist.", R.drawable.sampleseafood),
-            CatererData("MNO Delights", "Gourmet meals and desserts.", R.drawable.sampleseafood),
-            CatererData("ABC Catering", "Sea food and more.", R.drawable.sampleseafood),
-            CatererData("XYZ Catering", "Buffet specialist.", R.drawable.sampleseafood),
-            CatererData("MNO Delights", "Gourmet meals and desserts.", R.drawable.sampleseafood)
+            CatererData("XYZ Catering", "Buffet specialist.", R.drawable.shrimp),
+            CatererData("MNO Delights", "Gourmet meals and desserts.", R.drawable.fish),
+            CatererData("Jhonrel's Catering", "Sea food and more.", R.drawable.seafoodboil),
+            CatererData("James' Catering", "Buffet specialist.", R.drawable.salmon),
+            CatererData("Ian's Delights", "Gourmet meals and desserts.", R.drawable.shrimp),
+            CatererData("Rianel's Catering", "Sea food and more.", R.drawable.sampleseafood)
         )
 
         // Validation: Check if the caterers list is not empty
@@ -46,6 +50,17 @@ class DashboardActivity : Activity() {
         // Optional: Remove duplicates based on name (if needed)
         val uniqueCaterers = caterers.distinctBy { it.name }
 
-        recyclerView.adapter = CatererAdapter(uniqueCaterers)
+        recyclerView.adapter = CatererAdapter(uniqueCaterers) { selectedCaterer ->
+            val intent = Intent(this, CatererDetailsActivity::class.java)
+            intent.putExtra("caterer", selectedCaterer)
+            startActivity(intent)
+        }
+
+        /*recyclerView.adapter = CatererAdapter(uniqueCaterers)*/
+
+        settingIcon.setOnClickListener{
+            val intent = Intent(this, SettingsActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

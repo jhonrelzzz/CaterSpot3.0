@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.intprog32.caterspot30.Data.CatererData
 import com.intprog32.caterspot30.R
 
-class CatererAdapter(private val catererList: List<CatererData>) :
-    RecyclerView.Adapter<CatererAdapter.CatererViewHolder>() {
+class CatererAdapter(
+    private val catererList: List<CatererData>,
+    private val onItemClick: (CatererData) -> Unit
+) : RecyclerView.Adapter<CatererAdapter.CatererViewHolder>() {
 
     class CatererViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name = itemView.findViewById<TextView>(R.id.caterer_name)
@@ -29,7 +31,12 @@ class CatererAdapter(private val catererList: List<CatererData>) :
         holder.name.text = caterer.name
         holder.desc.text = caterer.description
         holder.image.setImageResource(caterer.imageResId)
+
+        holder.itemView.setOnClickListener {
+            onItemClick(caterer)
+        }
     }
+
 
     override fun getItemCount() = catererList.size
 }

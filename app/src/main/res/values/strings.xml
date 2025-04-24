@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">CaterSpot3.0</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet. Vel voluptas
+                                delectus aut laborum dolore ad sunt
+                                delectus in sapiente incidunt et earum
+                                exercitationem. Eum corporis illo aut
+                                perferendis minima et esse dolorem vel
+                                enim fuga aut fugiat voluptas.</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
 </resources>
