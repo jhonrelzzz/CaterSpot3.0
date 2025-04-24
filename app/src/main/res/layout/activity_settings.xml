@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5D477">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#DA9254"
+        android:padding="16dp"
+        android:elevation="10dp">
+
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/back"
+            android:contentDescription="Back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SETTINGS"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+    <!-- Settings Options -->
+    <LinearLayout
+        android:id="@+id/settings_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        android:layout_below="@id/header"
+        android:layout_above="@id/bottom_nav"
+        android:padding="20dp">
+
+        <!-- Notifications -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/button_round"
+            android:backgroundTint="@color/orange"
+            android:elevation="4dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Notifications"
+                android:textStyle="bold" />
+
+            <Switch
+                android:id="@+id/switch_notifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="180dp"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+        </LinearLayout>
+
+        <!-- Newsletter -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/button_round"
+            android:backgroundTint="@color/orange"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Newsletter"
+                android:textStyle="bold"/>
+
+            <Switch
+                android:id="@+id/switch_newsletter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:ignore="UseSwitchCompatOrMaterialXml"
+                android:layout_marginStart="195dp"/>
+
+        </LinearLayout>
+
+        <!-- Other Buttons -->
+        <Button
+            android:id="@+id/lang_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Language"
+            android:background="@drawable/button_round"
+            android:textStyle="bold"
+            android:elevation="10dp"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/privacy_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Privacy"
+            android:background="@drawable/button_round"
+            android:textStyle="bold"
+            android:elevation="4dp"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/developer_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Developer Page"
+            android:background="@drawable/button_round"
+            android:textStyle="bold"
+            android:elevation="4dp"/>
+    </LinearLayout>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rounded_edge"
+        android:backgroundTint="@color/orange"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/home_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/home"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/book_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/book"
+            android:layout_weight="1" />
+
+        <ImageView
+            android:id="@+id/settings_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/settings"
+            android:layout_weight="1" />
+    </LinearLayout>
+</RelativeLayout>
