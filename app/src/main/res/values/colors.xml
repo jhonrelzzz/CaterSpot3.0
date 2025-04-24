@@ -12,4 +12,5 @@
     <color name="yellowishOrange">#E7D283</color>
     <color name="lightYellow">#EDF4C2</color>
     <color name="TranslucentWhite">#80FFFFFF</color>
+    <color name="text_color">@color/black</color>
 </resources>

@@ -1,7 +1,11 @@
 package com.intprog32.caterspot30
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +19,14 @@ class DashboardActivity : Activity() {
 
         val recyclerView = findViewById<RecyclerView>(R.id.caterer_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val myImageButton: ImageView = findViewById(R.id.booking)
+        myImageButton.setOnClickListener {
+            // Handle the click event here
+            Toast.makeText(this, "Image clicked!", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, BookingActivity::class.java)
+            startActivity(intent)
+        }
 
         val caterers = listOf(
             CatererData("ABC Catering", "Sea food and more.", R.drawable.sampleseafood),
