@@ -38,9 +38,9 @@ class OTPActivity : Activity() {
                 Toast.makeText(this, "Fill put a number", Toast.LENGTH_LONG).show()
             } else {
                 val intent = Intent(this, ConfirmActivity::class.java)
-                intent.putExtra("email", email)
-                intent.putExtra("password", password)
+                intent.putExtra("user_data", userData)
                 startActivity(intent)
+
             }
         }
     }

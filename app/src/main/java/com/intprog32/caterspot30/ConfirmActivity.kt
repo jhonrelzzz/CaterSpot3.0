@@ -6,25 +6,26 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.intprog32.caterspot30.Data.UserData
 
 class ConfirmActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_confirm)
 
-        val OTP_number_editText = findViewById<EditText>(R.id.OTP_number)
         val confirm_Button = findViewById<Button>(R.id.OTPconfirm_button)
 
         confirm_Button.setOnClickListener {
-            val email = intent.getStringExtra("email")
-            val password = intent.getStringExtra("password")
+            val userData =  intent.getParcelableExtra<UserData>("user_data")
 
-            Toast.makeText(this, "Opening Login Activity", Toast.LENGTH_LONG).show()
-
-            val intent = Intent(this, LoginActivity::class.java)
-            intent.putExtra("email", email)
-            intent.putExtra("password", password)
-            startActivity(intent)
+            if (userData != null) {
+                Toast.makeText(this, "Opening Login Activity", Toast.LENGTH_LONG).show()
+                val intent = Intent(this, LoginActivity::class.java)
+                intent.putExtra("user_data", userData)
+                startActivity(intent)
+            } else {
+                Toast.makeText(this, "Missing user data", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 }
