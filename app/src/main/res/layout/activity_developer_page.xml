@@ -1,0 +1,207 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/orange"
+    android:padding="20dp">
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="37dp"
+        android:layout_height="33dp"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="-2dp"
+        android:background="@color/orange"
+        android:contentDescription="Back"
+        android:src="@drawable/whitebutton" />
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CATERSPOT"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tvTitle"
+        android:layout_marginTop="14dp">
+
+        <LinearLayout
+            android:id="@+id/devContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <!-- Developer 1 -->
+            <RelativeLayout
+                android:id="@+id/dev1"
+                android:background="@drawable/caterspotbackground"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_marginBottom="20dp">
+                <!-- ... same as before ... -->
+                <ImageView
+                    android:id="@+id/dev1Image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/cir"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pp" />
+
+                <TextView
+                    android:id="@+id/dev1Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dev1Image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="James Ian Canete"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dev1Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dev1Name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:text="Enthusiastic developer passionate about UI/UX design."
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <!-- Developer 2 -->
+            <RelativeLayout
+                android:id="@+id/dev2"
+                android:background="@drawable/caterspotbackground"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_marginBottom="20dp">
+                <!-- ... same as before ... -->
+                <ImageView
+                    android:id="@+id/dev2Image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/cir"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pp" />
+
+                <TextView
+                    android:id="@+id/dev2Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dev2Image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Ian Lance De La Cruz"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dev2Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dev2Name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:text="Enthusiastic developer passionate about UI/UX design."
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <!-- Developer 3 -->
+            <RelativeLayout
+                android:id="@+id/dev3"
+                android:background="@drawable/caterspotbackground"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_marginBottom="20dp">
+                <!-- ... same as before ... -->
+                <ImageView
+                    android:id="@+id/dev3Image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/cir"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pp" />
+
+                <TextView
+                    android:id="@+id/dev3Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dev3Image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Dev 4 Name"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dev3Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dev3Name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:text="Enthusiastic developer passionate about UI/UX design."
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+            <!-- Developer 4 -->
+            <RelativeLayout
+                android:id="@+id/dev4"
+                android:background="@drawable/caterspotbackground"
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_marginBottom="20dp">
+
+                <ImageView
+                    android:id="@+id/dev4Image"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/cir"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/pp" />
+
+                <TextView
+                    android:id="@+id/dev4Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dev4Image"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="Rianel B. Lumbaca"
+                    android:textColor="@android:color/white"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/dev4Desc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dev4Name"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="5dp"
+                    android:text="Enthusiastic developer passionate about UI/UX design."
+                    android:textColor="@android:color/white"
+                    android:textSize="16sp" />
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</RelativeLayout>
