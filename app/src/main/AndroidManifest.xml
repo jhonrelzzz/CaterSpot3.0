@@ -31,7 +31,7 @@
             android:name=".DishDetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".Data.DishDetailsActivity"
+            android:name=".BookingActivity"
             android:exported="false"
             android:theme="@style/Theme.CaterSpot30" />
         <activity
