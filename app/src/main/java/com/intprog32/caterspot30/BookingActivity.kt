@@ -40,7 +40,6 @@ class BookingActivity : Activity() {
         btnPickDate = findViewById(R.id.btnPickDate)
         etDate = findViewById(R.id.etDate)
 
-
         etDate = findViewById(R.id.etDate)
         btnPickLocation = findViewById(R.id.btnPickLocation)
         etLocation = findViewById(R.id.etLocation)
@@ -60,6 +59,18 @@ class BookingActivity : Activity() {
         btnNext.setOnClickListener {
             bookNow()
         }
+
+        btnNext.setOnClickListener {
+            startActivity(
+                Intent(this, PaymentActivity::class.java)
+            )
+        }
+        btnCancel.setOnClickListener {
+            startActivity(
+                Intent(this, DashboardActivity::class.java)
+            )
+        }
+
 
     }
 

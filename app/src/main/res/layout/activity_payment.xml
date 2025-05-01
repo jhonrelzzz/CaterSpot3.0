@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E5D477">
+
+    <!-- Header -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="#DA9254"
+        android:padding="16dp"
+        android:elevation="10dp">
+
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/back"
+            android:contentDescription="Back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PAYMENT"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_marginStart="16dp"
+            android:textColor="#000000"/>
+    </LinearLayout>
+
+    <!-- Settings Options -->
+    <LinearLayout
+        android:id="@+id/settings_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="16dp"
+        android:layout_below="@id/header"
+        android:layout_above="@id/bottom_nav"
+        android:padding="20dp">
+
+        <!-- User Info -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Jhonrel Ardiente (+63) 999 999 9999\nTalamban, Cebu City, Cebu, Visayas, 6000"
+            android:textSize="14sp"
+            android:textColor="#000"
+            android:drawablePadding="8dp"
+            android:padding="8dp"
+            android:elevation="4dp" />
+
+        <!-- Payment Method Card -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/transparent_round"
+            android:padding="16dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTintMode="src_in"
+            android:elevation="4dp"
+            android:backgroundTint="@color/orange">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Payment Method"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="#000"/>
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cash on Delivery"
+                android:textColor="#000" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Online Banking:"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:textColor="#000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start">
+
+                <ImageView android:src="@drawable/mastercard"
+                    android:layout_width="48dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="4dp"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="E-Wallet:"
+                android:textStyle="bold"
+                android:layout_marginTop="8dp"
+                android:textColor="#000" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="start"
+                android:layout_marginTop="4dp">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="4dp"
+                    android:src="@drawable/applepay" />
+
+                <ImageView android:src="@drawable/googlepay"
+                    android:layout_width="48dp"
+                    android:layout_height="32dp"
+                    android:layout_margin="4dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Delivery Time -->
+        <!-- Delivery Time -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Delivery Time:"
+                android:textColor="#000"
+                android:textStyle="bold"
+                android:layout_marginEnd="8dp"/>
+
+            <Spinner
+                android:id="@+id/spinner_hour"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:background="@drawable/rounded_edge"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=":"
+                android:layout_marginEnd="4dp"
+                android:textSize="20sp"/>
+
+            <Spinner
+                android:id="@+id/spinner_minute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/rounded_edge"/>
+
+            <Spinner
+                android:id="@+id/spinner_am_pm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/rounded_edge"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rounded_edge"
+        android:backgroundTint="@color/orange"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/home_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="Total:"
+            android:gravity="center"
+            android:layout_weight="1"/>
+
+        <ImageView
+            android:id="@+id/book_nav"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/book"
+            android:layout_weight="1" />
+    </LinearLayout>
+</RelativeLayout>
