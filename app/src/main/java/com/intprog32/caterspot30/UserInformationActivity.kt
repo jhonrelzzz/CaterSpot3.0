@@ -6,10 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+
 
 class UserInformationActivity : Activity() {
     @SuppressLint("MissingInflatedId")
@@ -18,6 +15,7 @@ class UserInformationActivity : Activity() {
         setContentView(R.layout.activity_user_information)
 
         val ebutton = findViewById<Button>(R.id.editButton)
+        val bbutton = findViewById<Button>(R.id.BackButton)
         val fnametext = findViewById<TextView>(R.id.firstNameText)
         val lnametext = findViewById<TextView>(R.id.lastNameText)
         val emailtext = findViewById<TextView>(R.id.emailText)
@@ -45,6 +43,11 @@ class UserInformationActivity : Activity() {
         ebutton.setOnClickListener {
             startActivity(
                 Intent(this,EditProfileActivity::class.java)
+            )
+        }
+        bbutton.setOnClickListener {
+            startActivity(
+                Intent(this,ProfileActivity::class.java)
             )
         }
     }
