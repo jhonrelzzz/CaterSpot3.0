@@ -25,6 +25,12 @@
             android:name=".AddMenuActivity"
             android:exported="false" />
         <activity
+            android:name=".SelectChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
             android:name=".DishDetailsActivity"
             android:exported="false" />
         <activity
