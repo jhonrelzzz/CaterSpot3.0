@@ -39,12 +39,16 @@ class UserInformationActivity : Activity() {
             }
         }
 
-
         ebutton.setOnClickListener {
             startActivity(
-                Intent(this,EditProfileActivity::class.java)
+                Intent(this,EditProfileActivity::class.java).apply {
+                    putExtra("firstname", fnametext.text.toString())
+                    putExtra("lastname", lnametext.text.toString())
+                    putExtra("email", emailtext.text.toString())
+                }
             )
         }
+
         bbutton.setOnClickListener {
             startActivity(
                 Intent(this,ProfileActivity::class.java).apply {

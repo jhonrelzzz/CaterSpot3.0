@@ -24,34 +24,40 @@ class ProfileActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        val textviewname = findViewById<TextView>(R.id.firstNameEditText)
-        val textviewname2 = findViewById<TextView>(R.id.lastNameEditText)
-        val textviewemail = findViewById<TextView>(R.id.emailtextview)
+        val firstTextView = findViewById<TextView>(R.id.firstnametextview)
+        val lastTextView= findViewById<TextView>(R.id.lastnametextview)
+        val eTextView = findViewById<TextView>(R.id.emailtextview)
         profileImageView = findViewById(R.id.ProfileImage)
         selectImageButton = findViewById(R.id.ChangeImageButton)
 
         intent?.let {
             it.getStringExtra("firstname")?.let { firstname ->
-                textviewname.text = firstname
+                firstTextView.text = firstname
             }
         }
 
         intent?.let {
             it.getStringExtra("lastname")?.let { lastname ->
-                textviewname2.text = lastname
+                lastTextView.text = lastname
             }
         }
 
         intent?.let {
             it.getStringExtra("email")?.let { email ->
-                textviewemail.text = email
+                eTextView.text = email
             }
         }
+
 
         val uinfobutton = findViewById<Button>(R.id.userinfo)
         uinfobutton.setOnClickListener {
             startActivity(
-                Intent(this,UserInformationActivity::class.java)
+                Intent(this,UserInformationActivity::class.java).apply {
+                    putExtra("firstname", firstTextView.text.toString())
+                    putExtra("lastname", lastTextView.text.toString())
+                    putExtra("email", eTextView.text.toString())
+                }
+
             )
         }
 
