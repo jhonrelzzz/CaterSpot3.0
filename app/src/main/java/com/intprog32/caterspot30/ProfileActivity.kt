@@ -19,18 +19,26 @@ class ProfileActivity : Activity() {
     private lateinit var selectImageButton: Button
     val PICK_IMAGE_REQUEST = 1
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
-        val textviewname = findViewById<TextView>(R.id.nametextview)
+        val textviewname = findViewById<TextView>(R.id.firstNameEditText)
+        val textviewname2 = findViewById<TextView>(R.id.lastNameEditText)
         val textviewemail = findViewById<TextView>(R.id.emailtextview)
         profileImageView = findViewById(R.id.ProfileImage)
         selectImageButton = findViewById(R.id.ChangeImageButton)
 
         intent?.let {
-            it.getStringExtra("name")?.let { name ->
-                textviewname.text = name
+            it.getStringExtra("firstname")?.let { firstname ->
+                textviewname.text = firstname
+            }
+        }
+
+        intent?.let {
+            it.getStringExtra("lastname")?.let { lastname ->
+                textviewname2.text = lastname
             }
         }
 
@@ -40,10 +48,10 @@ class ProfileActivity : Activity() {
             }
         }
 
-        val ebutton = findViewById<Button>(R.id.editbutton)
-        ebutton.setOnClickListener {
+        val uinfobutton = findViewById<Button>(R.id.userinfo)
+        uinfobutton.setOnClickListener {
             startActivity(
-                Intent(this,EditProfileActivity::class.java)
+                Intent(this,UserInformationActivity::class.java)
             )
         }
 

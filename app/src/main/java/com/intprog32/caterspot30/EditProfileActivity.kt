@@ -20,14 +20,16 @@ class EditProfileActivity : Activity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile)
 
-        val name = findViewById<EditText>(R.id.nameEditText)
+        val fname = findViewById<EditText>(R.id.firstNameEditText)
+        val lname = findViewById<EditText>(R.id.lastNameEditText)
         val emails = findViewById<EditText>(R.id.emailEditText)
 
         val savebutton = findViewById<Button>(R.id.saveButton)
         savebutton.setOnClickListener{
             startActivity(
                 Intent(this,ProfileActivity::class.java).apply {
-                    putExtra("name", name.text.toString())
+                    putExtra("firstname", fname.text.toString())
+                    putExtra("lastname", lname.text.toString())
                     putExtra("email", emails.text.toString())
                 }
             )

@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".EditProfileActivity"
-    android:layout_gravity="center"
+    tools:context=".UserInformationActivity"
     android:background="@drawable/caterspotbackground">
 
     <LinearLayout
@@ -16,10 +15,11 @@
         android:layout_marginTop="100dp"
         android:layout_gravity="center"
         android:orientation="vertical"
-        android:background="@color/lightYellow">
+        android:backgroundTint="@color/lightYellow"
+        android:background="@drawable/rounded_edge">
 
-        <EditText
-            android:id="@+id/firstNameEditText"
+        <TextView
+            android:id="@+id/firstNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="First Name"
@@ -28,28 +28,31 @@
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
             android:textColor="@color/black"
-            android:textColorHint="@color/black">
-        </EditText>
+            android:textColorHint="@color/black"
+            android:textSize="20sp">
+        </TextView>
 
-        <EditText
-            android:id="@+id/lastNameEditText"
+        <TextView
+            android:id="@+id/lastNameText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:hint="Last Name"
             android:textColor="@color/black"
-            android:textColorHint="@color/black">
-        </EditText>
+            android:textColorHint="@color/black"
+            android:textSize="20sp">
+        </TextView>
 
-        <EditText
-            android:id="@+id/emailEditText"
+        <TextView
+            android:id="@+id/emailText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:hint="Email"
             android:textColor="@color/black"
-            android:textColorHint="@color/black">
-        </EditText>
+            android:textColorHint="@color/black"
+            android:text="Email"
+            android:textSize="20sp">
+        </TextView>
 
     </LinearLayout>
 
@@ -60,26 +63,27 @@
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
         <Button
-            android:id="@+id/saveButton"
+            android:id="@+id/editButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/lightYellow"
             android:textColor="@color/black"
-            android:text="Save">
+            android:text="Edit">
         </Button>
 
         <Button
-            android:id="@+id/cancelButton"
+            android:id="@+id/BackButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_gravity="center"
             android:backgroundTint="@color/lightYellow"
             android:textColor="@color/black"
-            android:text="Cancel">
+            android:text="Back">
         </Button>
     </LinearLayout>
+
 
 </LinearLayout>
