@@ -151,9 +151,10 @@
             <Spinner
                 android:id="@+id/spinner_hour"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginEnd="4dp"
-                android:background="@drawable/rounded_edge"/>
+                android:background="@drawable/transparent_round"
+                android:backgroundTint="@color/lightYellow"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -165,15 +166,18 @@
             <Spinner
                 android:id="@+id/spinner_minute"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
                 android:layout_marginEnd="8dp"
-                android:background="@drawable/rounded_edge"/>
+                android:background="@drawable/transparent_round"
+                android:backgroundTint="@color/lightYellow"/>
 
             <Spinner
                 android:id="@+id/spinner_am_pm"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/rounded_edge"/>
+                android:layout_height="30dp"
+                android:background="@drawable/transparent_round"
+                android:backgroundTint="@color/white"/>
+
         </LinearLayout>
 
 
