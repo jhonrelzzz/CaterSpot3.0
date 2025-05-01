@@ -16,6 +16,15 @@
             android:name=".UserInformationActivity"
             android:exported="false" />
         <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddMenuActivity"
+            android:exported="false" />
+        <activity
             android:name=".DishDetailsActivity"
             android:exported="false" />
         <activity
