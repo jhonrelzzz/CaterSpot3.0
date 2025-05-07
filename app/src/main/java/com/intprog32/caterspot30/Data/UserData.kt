@@ -2,6 +2,7 @@ package com.intprog32.caterspot30.Data
 
 import android.os.Parcel
 import android.os.Parcelable
+import java.io.Serializable
 
 data class UserData(
     val firstName: String,
