@@ -56,6 +56,9 @@ dependencies {
     implementation ("com.squareup.okhttp3:okhttp:4.9.0")
     implementation ("com.squareup.okhttp3:logging-interceptor:4.9.0")
 
+    implementation ("com.github.bumptech.glide:glide:4.12.0")// Use the latest version
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0") // Use the latest version
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

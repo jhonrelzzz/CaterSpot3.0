@@ -2,16 +2,20 @@ package com.intprog32.caterspot30.Data
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class UserData(
     val firstName: String,
     val lastName: String,
     val email: String,
-    val password: String,
-    val phoneNumber: String
+    val password: String?,
+    val phoneNumber: String,
+    @SerializedName("_id") val id: String
+
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
         parcel.readString() ?: "",
@@ -25,6 +29,7 @@ data class UserData(
         parcel.writeString(email)
         parcel.writeString(password)
         parcel.writeString(phoneNumber)
+        parcel.writeString(id)
     }
 
     override fun describeContents(): Int {
