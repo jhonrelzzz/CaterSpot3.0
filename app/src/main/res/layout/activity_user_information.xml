@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".UserInformationActivity"
-    android:background="@drawable/caterspotbackground">
+    android:background="#F2E29F">
 
     <LinearLayout
         android:layout_width="350dp"
@@ -29,6 +29,8 @@
             android:layout_marginLeft="10dp"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
+            android:background="@drawable/border_edit_text"
+            android:padding="8dp"
             android:textSize="20sp">
         </TextView>
 
@@ -40,6 +42,8 @@
             android:hint="Last Name"
             android:textColor="@color/black"
             android:textColorHint="@color/black"
+            android:background="@drawable/border_edit_text"
+            android:padding="8dp"
             android:textSize="20sp">
         </TextView>
 
@@ -51,6 +55,8 @@
             android:textColor="@color/black"
             android:textColorHint="@color/black"
             android:text="Email"
+            android:background="@drawable/border_edit_text"
+            android:padding="8dp"
             android:textSize="20sp">
         </TextView>
 
@@ -68,8 +74,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/lightYellow"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/orange"
             android:text="Edit">
         </Button>
 
@@ -79,8 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/lightYellow"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/orange"
             android:text="Back">
         </Button>
     </LinearLayout>

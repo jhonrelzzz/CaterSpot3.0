@@ -18,34 +18,77 @@
         android:orientation="vertical"
         android:background="@color/lightYellow">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:text="First Name">
+        </TextView>
+
         <EditText
             android:id="@+id/firstNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="First Name"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="3dp"
+            android:background="@drawable/border_edit_text"
             android:textColor="@color/black"
             android:textColorHint="@color/black">
         </EditText>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:text="Last Name">
+        </TextView>
+
 
         <EditText
             android:id="@+id/lastNameEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:padding="3dp"
+            android:background="@drawable/border_edit_text"
             android:hint="Last Name"
             android:textColor="@color/black"
             android:textColorHint="@color/black">
         </EditText>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:text="Email">
+        </TextView>
+
         <EditText
             android:id="@+id/emailEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:padding="3dp"
+            android:background="@drawable/border_edit_text"
             android:hint="Email"
             android:textColor="@color/black"
             android:textColorHint="@color/black">
@@ -65,8 +108,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/lightYellow"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/orange"
             android:text="Save">
         </Button>
 
@@ -76,8 +118,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:layout_gravity="center"
-            android:backgroundTint="@color/lightYellow"
-            android:textColor="@color/black"
+            android:backgroundTint="@color/orange"
             android:text="Cancel">
         </Button>
     </LinearLayout>
