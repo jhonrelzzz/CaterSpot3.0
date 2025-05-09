@@ -61,13 +61,6 @@ class ProfileActivity : Activity() {
             )
         }
 
-        val addButton = findViewById<Button>(R.id.addmenubutton)
-        addButton.setOnClickListener{
-            startActivity(
-                Intent(this,AddMenuActivity::class.java)
-            )
-        }
-
         val backButton = findViewById<Button>(R.id.button1)
         backButton.setOnClickListener{
             startActivity(

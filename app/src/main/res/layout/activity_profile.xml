@@ -126,26 +126,6 @@
                 android:layout_margin="5dp">
             </Button>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="textStart"
-                android:paddingLeft="15dp"
-                android:backgroundTint="@color/orange"
-                android:text="Settings"
-                android:layout_margin="5dp">
-            </Button>
-
-            <Button
-                android:id="@+id/addmenubutton"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textAlignment="textStart"
-                android:paddingLeft="15dp"
-                android:backgroundTint="@color/orange"
-                android:text="Add Menu"
-                android:layout_margin="5dp">
-            </Button>
 
         </LinearLayout>
 
