@@ -28,21 +28,11 @@
             android:text="Book catering services easily."
             android:textSize="14sp"
             android:textColor="@android:color/black" />
-
-        <EditText
-            android:id="@+id/search_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/header_text"
-            android:layout_marginTop="10dp"
-            android:hint="Search catering services"
-            android:background="@drawable/rounded_edge"
-            android:padding="10dp" />
     </RelativeLayout>
 
     <!-- Caterer List -->
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/caterer_recycler"
+        android:id="@+id/caterer_chat_recycler"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_below="@id/header_layout"
@@ -64,6 +54,7 @@
         android:gravity="center">
 
         <ImageView
+            android:id="@+id/btnTempChat"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/home"
@@ -79,7 +70,7 @@
             android:layout_weight="1" />
 
         <ImageView
-            android:id="@+id/btnTempChat"
+            android:id="@+id/chat"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:src="@drawable/chat_bubble"

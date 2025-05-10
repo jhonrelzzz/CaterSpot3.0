@@ -23,11 +23,17 @@ class DashboardActivity : Activity() {
         val recyclerView = findViewById<RecyclerView>(R.id.caterer_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val myImageButton: ImageView = findViewById(R.id.booking)
-        myImageButton.setOnClickListener {
+        val bookingBtn: ImageView = findViewById(R.id.booking)
+        bookingBtn.setOnClickListener {
             // Handle the click event here
             Toast.makeText(this, "Image clicked!", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, BookingActivity::class.java)
+            startActivity(intent)
+        }
+
+        val ChatBtn: ImageView = findViewById(R.id.btnTempChat)
+        ChatBtn.setOnClickListener {
+            val intent = Intent(this, SelectChatActivity::class.java)
             startActivity(intent)
         }
 
