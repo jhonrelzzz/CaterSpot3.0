@@ -5,12 +5,12 @@ import android.app.Activity
 import android.content.Intent
 import android.media.Image
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.Toast
 
 class SettingsActivity : Activity() {
-    @SuppressLint("MissingInflatedId", "UseSwitchCompatOrMaterialCode")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -32,6 +32,7 @@ class SettingsActivity : Activity() {
             val intent = Intent(this, BookingActivity::class.java)
             startActivity(intent)
         }
+
 
         // Switch: Notifications
         val switchNotifications = findViewById<Switch>(R.id.switch_notifications)
