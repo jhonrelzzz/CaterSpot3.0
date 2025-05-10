@@ -37,6 +37,13 @@ class DashboardActivity : Activity() {
             startActivity(intent)
         }
 
+        val to_profileButton = findViewById<ImageView>(R.id.to_profile)
+        to_profileButton.setOnClickListener{
+            startActivity(
+                Intent(this,ProfileActivity::class.java)
+            )
+        }
+
         val caterers = listOf(
             CatererData("ABC Catering", "Sea food and more.", R.drawable.sampleseafood),
             CatererData("XYZ Catering", "Buffet specialist.", R.drawable.shrimp),

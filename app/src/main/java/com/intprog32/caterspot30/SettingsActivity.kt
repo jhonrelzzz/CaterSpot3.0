@@ -11,6 +11,7 @@ import android.widget.Switch
 import android.widget.Toast
 
 class SettingsActivity : Activity() {
+    @SuppressLint("MissingInflatedId", "WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -19,6 +20,7 @@ class SettingsActivity : Activity() {
         val back = findViewById<ImageView>(R.id.back_button)
         val home = findViewById<ImageView>(R.id.home_nav)
         val book = findViewById<ImageView>(R.id.book_nav)
+        val profile = findViewById<Button>(R.id.profile_buttons)
 
         back.setOnClickListener {
             val intent = Intent(this, DashboardActivity::class.java)
@@ -31,6 +33,12 @@ class SettingsActivity : Activity() {
         book.setOnClickListener {
             val intent = Intent(this, BookingActivity::class.java)
             startActivity(intent)
+        }
+
+        profile.setOnClickListener {
+            startActivity(
+                Intent(this,ProfileActivity::class.java)
+            )
         }
 
 
