@@ -148,22 +148,6 @@
             android:layout_weight="1" />
 
         <ImageView
-            android:id="@+id/booking"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/book"
-            android:clickable="true"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:id="@+id/btnTempChat"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:src="@drawable/chat_bubble"
-            android:layout_weight="1"
-            android:clickable="true"/>
-
-        <ImageView
             android:id="@+id/nav_settings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
