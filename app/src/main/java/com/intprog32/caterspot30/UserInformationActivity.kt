@@ -39,6 +39,7 @@ class UserInformationActivity : Activity() {
             }
         }
 
+
         ebutton.setOnClickListener {
             startActivity(
                 Intent(this,EditProfileActivity::class.java).apply {

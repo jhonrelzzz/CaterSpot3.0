@@ -23,7 +23,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="First Name"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="30dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
@@ -60,6 +60,19 @@
             android:textSize="20sp">
         </TextView>
 
+        <TextView
+            android:id="@+id/contactText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:text="Contact"
+            android:background="@drawable/border_edit_text"
+            android:padding="8dp"
+            android:textSize="20sp">
+        </TextView>
+
     </LinearLayout>
 
     <LinearLayout
@@ -68,6 +81,7 @@
         android:layout_gravity="center"
         android:orientation="horizontal"
         android:layout_marginTop="20dp">
+
         <Button
             android:id="@+id/editButton"
             android:layout_width="wrap_content"

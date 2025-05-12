@@ -39,7 +39,7 @@
             android:layout_marginRight="20dp"
             android:padding="3dp"
             android:background="@drawable/border_edit_text"
-            android:textColor="@color/black"
+            android:textColor="#808080"
             android:textColorHint="@color/black">
         </EditText>
 

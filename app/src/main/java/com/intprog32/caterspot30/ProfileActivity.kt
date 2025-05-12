@@ -8,10 +8,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
+
 
 class ProfileActivity : Activity() {
     @SuppressLint("MissingInflatedId")
@@ -29,6 +28,7 @@ class ProfileActivity : Activity() {
         val eTextView = findViewById<TextView>(R.id.emailtextview)
         profileImageView = findViewById(R.id.ProfileImage)
         selectImageButton = findViewById(R.id.ChangeImageButton)
+        val logoutButton = findViewById<Button>(R.id.logout_Button)
 
         intent?.let {
             it.getStringExtra("firstname")?.let { firstname ->
@@ -59,6 +59,24 @@ class ProfileActivity : Activity() {
                 }
 
             )
+        }
+
+        logoutButton.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("Logout")
+                .setMessage("Are you sure you want to logout?")
+                .setPositiveButton("Yes") { dialog, _ ->
+                    startActivity(
+                        Intent(this, LoginActivity::class.java)
+                    )
+                    finish()
+                    Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                }
+                .setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
         }
 
         val backButton = findViewById<Button>(R.id.button1)
