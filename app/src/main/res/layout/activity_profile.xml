@@ -135,28 +135,7 @@
                 android:paddingLeft="15dp"
                 android:layout_margin="5dp">
             </Button>
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/orange"
-                android:text="Change Password"
-                android:textAlignment="textStart"
-                android:paddingLeft="15dp"
-                android:layout_margin="5dp">
-            </Button>
-
-            <Button
-                android:id="@+id/logout_Button"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/orange"
-                android:text="Logout"
-                android:textColor="#C6373C"
-                android:textAlignment="textStart"
-                android:paddingLeft="15dp"
-                android:layout_margin="5dp">
-            </Button>
+            
 
 
         </LinearLayout>

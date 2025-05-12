@@ -28,7 +28,7 @@ class ProfileActivity : Activity() {
         val eTextView = findViewById<TextView>(R.id.emailtextview)
         profileImageView = findViewById(R.id.ProfileImage)
         selectImageButton = findViewById(R.id.ChangeImageButton)
-        val logoutButton = findViewById<Button>(R.id.logout_Button)
+
 
         intent?.let {
             it.getStringExtra("firstname")?.let { firstname ->
@@ -48,7 +48,6 @@ class ProfileActivity : Activity() {
             }
         }
 
-
         val uinfobutton = findViewById<Button>(R.id.userinfo)
         uinfobutton.setOnClickListener {
             startActivity(
@@ -59,24 +58,6 @@ class ProfileActivity : Activity() {
                 }
 
             )
-        }
-
-        logoutButton.setOnClickListener {
-            AlertDialog.Builder(this)
-                .setTitle("Logout")
-                .setMessage("Are you sure you want to logout?")
-                .setPositiveButton("Yes") { dialog, _ ->
-                    startActivity(
-                        Intent(this, LoginActivity::class.java)
-                    )
-                    finish()
-                    Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
-                    dialog.dismiss()
-                }
-                .setNegativeButton("No") { dialog, _ ->
-                    dialog.dismiss()
-                }
-                .show()
         }
 
         val backButton = findViewById<Button>(R.id.button1)

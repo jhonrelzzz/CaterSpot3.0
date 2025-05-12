@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.Switch
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 class SettingsActivity : Activity() {
     @SuppressLint("MissingInflatedId", "WrongViewCast")
@@ -21,6 +22,7 @@ class SettingsActivity : Activity() {
         val home = findViewById<ImageView>(R.id.home_nav)
         val book = findViewById<ImageView>(R.id.book_nav)
         val profile = findViewById<Button>(R.id.profile_buttons)
+        val logoutButton = findViewById<Button>(R.id.logout_Button)
 
         back.setOnClickListener {
             val intent = Intent(this, DashboardActivity::class.java)
@@ -41,6 +43,23 @@ class SettingsActivity : Activity() {
             )
         }
 
+        logoutButton.setOnClickListener {
+            AlertDialog.Builder(this)
+                .setTitle("Logout")
+                .setMessage("Are you sure you want to logout?")
+                .setPositiveButton("Yes") { dialog, _ ->
+                    startActivity(
+                        Intent(this, LoginActivity::class.java)
+                    )
+                    finish()
+                    Toast.makeText(this, "Logged out successfully", Toast.LENGTH_SHORT).show()
+                    dialog.dismiss()
+                }
+                .setNegativeButton("No") { dialog, _ ->
+                    dialog.dismiss()
+                }
+                .show()
+        }
 
         // Switch: Notifications
         val switchNotifications = findViewById<Switch>(R.id.switch_notifications)
