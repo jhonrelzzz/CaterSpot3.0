@@ -43,34 +43,47 @@ class LoginActivity : Activity() {
 
             // Make the network request to validate the user
             RetrofitInstance.api.validateUser(email, password).enqueue(object: Callback<ResponseBody> {
-                // ... rest of your onResponse and onFailure ...
                 override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
-                    Log.d("LoginActivity", "Received response status code: ${response.code()}")
                     if (response.isSuccessful) {
-                        Log.d("LoginActivity", "Response is successful (2xx).") // Add this line
-                        val responseBodyString = response.body()?.string()
-                        Log.d("LoginActivity", "Successful response body: $responseBodyString") // Log the body
+                        // Login successful, now fetch full user data
+                        RetrofitInstance.api.getUserByEmail(email).enqueue(object: Callback<UserData> {
+                            override fun onResponse(call: Call<UserData>, response: Response<UserData>) {
+                                if (response.isSuccessful) {
+                                    val userData = response.body()
+                                    val userId = userData?.id
 
-                        Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
-                        Log.d("LoginActivity", "Showing 'Login Successful' toast.") // Add this line
+                                    if (userId != null) {
+                                        val sharedPref = getSharedPreferences("CaterspotPrefs", MODE_PRIVATE)
+                                        sharedPref.edit()
+                                            .putString("userId", userId)
+                                            .putString("loggedInEmail", email)
+                                            .apply()
 
-                        val intent = Intent(this@LoginActivity, DashboardActivity::class.java)
-                        Log.d("LoginActivity", "Attempting to start DashboardActivity.") // Add this line
-                        startActivity(intent)
+                                        Toast.makeText(this@LoginActivity, "Login Successful", Toast.LENGTH_SHORT).show()
+                                        startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+                                        finish()
+                                    } else {
+                                        Toast.makeText(this@LoginActivity, "Failed to retrieve user ID", Toast.LENGTH_LONG).show()
+                                    }
+                                } else {
+                                    Toast.makeText(this@LoginActivity, "Failed to fetch user info", Toast.LENGTH_LONG).show()
+                                }
+                            }
 
-                        Log.d("LoginActivity", "startActivity called.") // Add this line
+                            override fun onFailure(call: Call<UserData>, t: Throwable) {
+                                Toast.makeText(this@LoginActivity, "Network error: ${t.localizedMessage}", Toast.LENGTH_LONG).show()
+                            }
+                        })
                     } else {
-                        val errorBodyString = response.errorBody()?.string()
-                        Log.e("LoginActivity", "Error response body: $errorBodyString") // Log error body
-                        // ... handle non-successful ...
+                        Toast.makeText(this@LoginActivity, "Invalid Login", Toast.LENGTH_LONG).show()
                     }
                 }
 
                 override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
-                    Log.e("LoginActivity", "Network failure: ${t.message}", t) // Log failure with stack trace
-                    // ... handle failure ...
+                    Toast.makeText(this@LoginActivity, "Network error: ${t.localizedMessage}", Toast.LENGTH_LONG).show()
                 }
             })
+
         }
 
         register_text.setOnClickListener {

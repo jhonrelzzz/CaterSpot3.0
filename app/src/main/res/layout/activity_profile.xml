@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ProfileActivity"
+    tools:context=".NewProfileActivity"
     android:padding="16dp"
     android:background="@drawable/caterspotbackground">
 
@@ -118,42 +118,6 @@
 
         </LinearLayout>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/bottom_nav"
-        android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/rounded_edge"
-        android:backgroundTint="@color/orange"
-        android:orientation="horizontal"
-        android:gravity="center">
-
-        <ImageView
-            android:id="@+id/home_nav"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/home"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:id="@+id/booking"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/book"
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_weight="1" />
-
-        <ImageView
-            android:id="@+id/nav_settings"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:src="@drawable/settings"
-            android:layout_weight="1" />
     </LinearLayout>
 
 </LinearLayout>

@@ -72,7 +72,8 @@ class RegisterActivity : Activity() {
                 lastName = lastName,
                 email = email,
                 password = password,
-                phoneNumber = phoneNum
+                phoneNumber = phoneNum,
+                id = ""
             )
 
             // Call the API to register the user

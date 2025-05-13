@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/caterspotbackground"
+    android:padding="40dp"
+    tools:context=".AddActivity">
+
+    <ImageView
+        android:id="@+id/back_button"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/back"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="8dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/Catering_Name_Input"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_edge"
+        android:ems="10"
+        android:hint="Catering Name"
+        android:inputType="text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginTop="200dp"/>
+
+    <EditText
+        android:id="@+id/Description_input"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:background="@drawable/rounded_edge"
+        android:ems="10"
+        android:hint="Short Description"
+        android:inputType="text"
+        app:layout_constraintTop_toBottomOf="@id/Catering_Name_Input"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/ImageUrl_input"
+        android:layout_width="0dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_edge"
+        android:ems="10"
+        android:hint="Image Url"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/Description_input"
+        tools:layout_editor_absoluteY="458dp" />
+
+    <Button
+        android:id="@+id/add_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_round"
+        android:text="Add Caterer"
+        android:textAllCaps="false"
+        app:layout_constraintTop_toBottomOf="@id/ImageUrl_input"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="40dp"
+        android:layout_marginHorizontal="32dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

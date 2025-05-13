@@ -1,3 +1,4 @@
+/*
 package com.intprog32.caterspot30
 
 import android.app.Activity
@@ -63,4 +64,4 @@ class PaymentActivity : Activity() {
 
 
     }
-}
+}*/

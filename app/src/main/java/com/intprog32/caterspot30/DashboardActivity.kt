@@ -2,71 +2,154 @@ package com.intprog32.caterspot30
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
+import android.media.Image
 import android.os.Bundle
-import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.intprog32.caterspot30.Adapters.CatererAdapter
 import com.intprog32.caterspot30.Data.CatererData
+import com.intprog32.caterspot30.Intefaces.RetrofitInstance
+import okhttp3.ResponseBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class DashboardActivity : Activity() {
+    private lateinit var recyclerView: RecyclerView
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
 
         val settingIcon =  findViewById<ImageView>(R.id.nav_settings)
+        val addBtn = findViewById<FloatingActionButton>(R.id.add_button)
+        val searchBar = findViewById<EditText>(R.id.search_bar)
+        val searchButton = findViewById<ImageView>(R.id.search_button)
 
-        val recyclerView = findViewById<RecyclerView>(R.id.caterer_recycler)
+        addBtn.setOnClickListener{
+            startActivity(
+                Intent(this, AddActivity::class.java)
+            )
+        }
+
+        searchButton.setOnClickListener {
+            val query = searchBar.text.toString().trim()
+            if (query.isEmpty()) {
+                Toast.makeText(this, "Please enter a search term", Toast.LENGTH_SHORT).show()
+            } else {
+                performSearch(query)
+            }
+        }
+
+        recyclerView = findViewById(R.id.caterer_recycler)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val bookingBtn: ImageView = findViewById(R.id.booking)
-        bookingBtn.setOnClickListener {
-            // Handle the click event here
-            Toast.makeText(this, "Image clicked!", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, BookingActivity::class.java)
-            startActivity(intent)
-        }
+        // Inside your onCreate or appropriate method
+        RetrofitInstance.api.getCaterers().enqueue(object : Callback<List<CatererData>> {
+            override fun onResponse(call: Call<List<CatererData>>, response: Response<List<CatererData>>) {
+                if (response.isSuccessful) {
+                    val caterersFromApi = response.body() ?: emptyList()
 
-        val ChatBtn: ImageView = findViewById(R.id.btnTempChat)
-        ChatBtn.setOnClickListener {
-            val intent = Intent(this, SelectChatActivity::class.java)
-            startActivity(intent)
-        }
+                    if (caterersFromApi.isEmpty()) {
+                        Toast.makeText(this@DashboardActivity, "No caterers available.", Toast.LENGTH_LONG).show()
+                        return
+                    }
 
-        val caterers = listOf(
-            CatererData("ABC Catering", "Sea food and more.", R.drawable.sampleseafood),
-            CatererData("XYZ Catering", "Buffet specialist.", R.drawable.shrimp),
-            CatererData("MNO Delights", "Gourmet meals and desserts.", R.drawable.fish),
-            CatererData("Jhonrel's Catering", "Sea food and more.", R.drawable.seafoodboil),
-            CatererData("James' Catering", "Buffet specialist.", R.drawable.salmon),
-            CatererData("Ian's Delights", "Gourmet meals and desserts.", R.drawable.shrimp),
-            CatererData("Rianel's Catering", "Sea food and more.", R.drawable.sampleseafood)
-        )
+                    val uniqueCaterers = caterersFromApi.distinctBy { it.name }
 
-        // Validation: Check if the caterers list is not empty
-        if (caterers.isEmpty()) {
-            Toast.makeText(this, "No caterers available to display.", Toast.LENGTH_LONG).show()
-            return
-        }
+                    val adapter = CatererAdapter(
+                        uniqueCaterers.toMutableList(),
+                        onItemClick = { selectedCaterer ->
+                            val intent = Intent(this@DashboardActivity, CatererDetailsActivity::class.java)
+                            intent.putExtra("caterer", selectedCaterer)
+                            startActivity(intent)
+                        },
+                        onItemLongClick = { caterer ->
+                            showDeleteDialog(caterer)
+                        }
+                    )
+                    recyclerView.adapter = adapter
 
-        // Optional: Remove duplicates based on name (if needed)
-        val uniqueCaterers = caterers.distinctBy { it.name }
+                } else {
+                    Toast.makeText(this@DashboardActivity, "Failed to load caterers", Toast.LENGTH_LONG).show()
+                }
+            }
 
-        recyclerView.adapter = CatererAdapter(uniqueCaterers) { selectedCaterer ->
-            val intent = Intent(this, CatererDetailsActivity::class.java)
-            intent.putExtra("caterer", selectedCaterer)
-            startActivity(intent)
-        }
-
-        /*recyclerView.adapter = CatererAdapter(uniqueCaterers)*/
+            override fun onFailure(call: Call<List<CatererData>>, t: Throwable) {
+                Toast.makeText(this@DashboardActivity, "Network error: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        })
 
         settingIcon.setOnClickListener{
             val intent = Intent(this, SettingsActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    private fun showDeleteDialog(caterer: CatererData) {
+        AlertDialog.Builder(this)
+            .setTitle("Delete Caterer")
+            .setMessage("Are you sure you want to delete ${caterer.name}?")
+            .setPositiveButton("Yes") { dialog, _ ->
+                deleteCaterer(caterer)
+                dialog.dismiss()
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .create()
+            .show()
+    }
+
+    private fun deleteCaterer(caterer: CatererData) {
+        RetrofitInstance.api.deleteCaterer(caterer._id).enqueue(object : Callback<ResponseBody> {
+            override fun onResponse(call: Call<ResponseBody>, response: Response<ResponseBody>) {
+                if (response.isSuccessful) {
+                    // Remove from list and notify adapter
+                    // Find index of the caterer
+                    val adapter = recyclerView.adapter as CatererAdapter
+                    adapter.removeItem(caterer)
+                    Toast.makeText(this@DashboardActivity, "Caterer deleted", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this@DashboardActivity, "Failed to delete caterer", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseBody>, t: Throwable) {
+                Toast.makeText(this@DashboardActivity, "Error: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        })
+    }
+
+    private fun performSearch(query: String) {
+        RetrofitInstance.api.getCaterers().enqueue(object : Callback<List<CatererData>> {
+            override fun onResponse(call: Call<List<CatererData>>, response: Response<List<CatererData>>) {
+                if (response.isSuccessful) {
+                    val caterers = response.body() ?: emptyList()
+                    val matchedCaterer = caterers.find { it.name.equals(query, ignoreCase = true) }
+                    if (matchedCaterer != null) {
+                        // Navigate to CatererDetailsActivity with the matched caterer
+                        val intent = Intent(this@DashboardActivity, CatererDetailsActivity::class.java)
+                        intent.putExtra("caterer", matchedCaterer)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this@DashboardActivity, "No matching caterer found", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    Toast.makeText(this@DashboardActivity, "Failed to load caterers", Toast.LENGTH_LONG).show()
+                }
+            }
+
+            override fun onFailure(call: Call<List<CatererData>>, t: Throwable) {
+                Toast.makeText(this@DashboardActivity, "Network error: ${t.message}", Toast.LENGTH_LONG).show()
+            }
+        })
     }
 }

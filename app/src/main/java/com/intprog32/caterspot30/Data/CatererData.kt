@@ -4,20 +4,23 @@ import android.os.Parcel
 import android.os.Parcelable
 
 data class CatererData(
+    val _id: String,
     val name: String,
     val description: String,
-    val imageResId: Int
+    val imageUrl: String
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",
         parcel.readString() ?: "",
-        parcel.readInt()
+        parcel.readString() ?: "",
+        parcel.readString() ?: ""
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(_id)
         parcel.writeString(name)
         parcel.writeString(description)
-        parcel.writeInt(imageResId)
+        parcel.writeString(imageUrl)
     }
 
     override fun describeContents(): Int = 0

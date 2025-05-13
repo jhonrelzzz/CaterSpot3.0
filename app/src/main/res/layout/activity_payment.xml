@@ -133,52 +133,6 @@
 
         <!-- Delivery Time -->
         <!-- Delivery Time -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="16dp"
-            android:gravity="center_vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Delivery Time:"
-                android:textColor="#000"
-                android:textStyle="bold"
-                android:layout_marginEnd="8dp"/>
-
-            <Spinner
-                android:id="@+id/spinner_hour"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginEnd="4dp"
-                android:background="@drawable/transparent_round"
-                android:backgroundTint="@color/lightYellow"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=":"
-                android:layout_marginEnd="4dp"
-                android:textSize="20sp"/>
-
-            <Spinner
-                android:id="@+id/spinner_minute"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/transparent_round"
-                android:backgroundTint="@color/lightYellow"/>
-
-            <Spinner
-                android:id="@+id/spinner_am_pm"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:background="@drawable/transparent_round"
-                android:backgroundTint="@color/white"/>
-
-        </LinearLayout>
 
 
     </LinearLayout>

@@ -29,8 +29,6 @@ class NewProfileActivity : Activity() {
     private lateinit var editButton: Button
     private lateinit var saveButton: Button
     private lateinit var backButton: ImageView
-    private lateinit var home: ImageView
-    private lateinit var book: ImageView
 
     private lateinit var apiService: ApiService
     private var currentUser: UserData? = null
@@ -49,8 +47,6 @@ class NewProfileActivity : Activity() {
         editButton = findViewById(R.id.edit_button)
         saveButton = findViewById(R.id.save_button)
         backButton = findViewById(R.id.back_button)
-        home = findViewById<ImageView>(R.id.home_nav)
-        book = findViewById<ImageView>(R.id.booking_nav)
 
         // Disable save button until user data is loaded
         saveButton.isEnabled = false
@@ -157,14 +153,6 @@ class NewProfileActivity : Activity() {
             startActivity(
                 Intent(this, SettingsActivity::class.java)
             )
-        }
-        home.setOnClickListener {
-            val intent = Intent(this, DashboardActivity::class.java)
-            startActivity(intent)
-        }
-        book.setOnClickListener {
-            val intent = Intent(this, BookingActivity::class.java)
-            startActivity(intent)
         }
     }
 }
