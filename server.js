@@ -1,33 +1,33 @@
+const bcrypt = require('bcrypt');
 const express = require('express');
 const { MongoClient } = require('mongodb');
 const { ObjectId } = require('mongodb');
 const cors = require('cors');
-require('dotenv').config();
-
 const app = express();
 const port = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
+require('dotenv').config();
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
-
-const bcrypt = require('bcrypt');
 const saltRounds = 10; 
 
 // MongoDB connection setup
 const uri = process.env.MONGODB_URI;
-let itemsCollection;
+
 let usersCollection;
+let caterersCollection;
+let bookingsCollection;
 
 async function connectToDB() {
   const client = new MongoClient(uri);
   try {
     await client.connect();
     const database = client.db('mydatabase');
-    itemsCollection = database.collection('items');
-    usersCollection = database.collection('regUsers'); // 👈 Add this line
-
+    usersCollection = database.collection('regUsers');
+    caterersCollection = database.collection('caterers');
+    bookingsCollection = database.collection('bookings');
     console.log("Connected to MongoDB Atlas");
   } catch (err) {
     console.error('Failed to connect to MongoDB:', err);
@@ -47,21 +47,22 @@ async function startServer() {
 
 // Backend (Node.js)
 
-
-app.get('/users/validate', async (req, res) =>  {
+app.get('/users/validate', async (req, res) => {
   try {
     const { email, password } = req.query;
-    console.log('Attempting to validate user with email:', email); // Log the email being searched
-    console.log('Provided password:', password); // Log the provided password (be cautious with logging sensitive info in production)
+    console.log('Attempting to validate user with email:', email);
+    console.log('Provided password:', password);
 
     const user = await usersCollection.findOne({ email: email });
 
     if (user) {
-      console.log('User found:', user); // Log the user object if found
-      console.log('Stored password:', user.password); // Log the stored password
+      console.log('User found:', user);
+      console.log('Stored password (hashed):', user.password);
 
-      // Check if the user exists and the password matches
-      if (user.password === password) { // Or use bcrypt.compare if hashing is implemented
+      // ✅ Use bcrypt to compare hashed password
+      const passwordMatch = await bcrypt.compare(password, user.password);
+
+      if (passwordMatch) {
         res.status(200).json({ message: 'Login successful' });
       } else {
         console.log('Password mismatch.');
@@ -74,6 +75,56 @@ app.get('/users/validate', async (req, res) =>  {
   } catch (err) {
     console.error('Error fetching user:', err);
     res.status(500).send('Error fetching user');
+  }
+});
+
+app.post('/caterers', async (req, res) => {
+  const { name, description, imageUrl } = req.body;
+
+  if (!name || !description || !imageUrl) {
+    return res.status(400).send('Missing required caterer data');
+  }
+
+  const newCaterer = {
+    name,
+    description,
+    imageUrl,
+  };
+
+  try {
+    const result = await caterersCollection.insertOne(newCaterer);
+    res.status(201).json({ message: 'Caterer added', id: result.insertedId });
+  } catch (err) {
+    console.error('Error inserting caterer:', err);
+    res.status(500).send('Error adding caterer');
+  }
+});
+
+app.get('/caterers', async (req, res) => {
+  try {
+    const caterers = await caterersCollection.find({}).toArray();
+    res.status(200).json(caterers);
+  } catch (err) {
+    console.error('Error fetching caterers:', err);
+    res.status(500).send('Error fetching caterers');
+  }
+});
+
+app.delete('/caterers/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    if (!ObjectId.isValid(id)) {
+      return res.status(400).send('Invalid caterer ID');
+    }
+    const result = await caterersCollection.deleteOne({ _id: new ObjectId(id) });
+    if (result.deletedCount === 1) {
+      res.status(200).send(`Caterer with ID ${id} deleted successfully.`);
+    } else {
+      res.status(404).send(`Caterer with ID ${id} not found.`);
+    }
+  } catch (err) {
+    console.error('Error deleting caterer:', err);
+    res.status(500).send('Error deleting caterer');
   }
 });
 
@@ -105,29 +156,31 @@ app.get('/users/:id', async (req, res) => {
   }
 });
 
-// GET /users/profile?email=user@example.com
-app.get('/users/profile', async (req, res) => {
-  console.log('Received request with query:', req.query);
+// GET route to retrieve user by email
+app.get('/users', async (req, res) => {
   const { email } = req.query;
+
   if (!email) {
-    console.log('No email parameter provided.');
-    return res.status(400).send('Email query parameter is required.');
+    return res.status(400).send('Email is required');
   }
 
   try {
-    const user = await usersCollection.findOne({ email: email });
-    if (user) {
-      delete user.password; // remove sensitive info before sending
-      res.status(200).json(user);
-    } else {
-      res.status(404).send('User not found');
+    const user = await usersCollection.findOne({ email });
+
+    if (!user) {
+      return res.status(404).send('User not found');
     }
+
+    // Exclude password from response
+    const { password, ...userWithoutPassword } = user;
+
+    res.status(200).json(userWithoutPassword);
   } catch (err) {
-    res.status(500).send('Server error');
+    console.error('Error fetching user by email:', err);
+    res.status(500).send('Error fetching user');
   }
 });
 
-// POST route to insert an item
 
 app.post('/users', async (req, res) => {
   console.log('Received data:', req.body);
@@ -177,42 +230,92 @@ app.delete('/users/:id', async (req, res) => {
   }
 });
 
+
 // PUT route to update user details
 app.put('/users/:id', async (req, res) => {
-  const { id } = req.params;  // Get the user ID from the URL
-  const { firstName, lastName, email, password, phoneNumber } = req.body;  // Get new data from the request body
+  const { id } = req.params; // Get user ID from URL
+  const { firstName, lastName, email, password, phoneNumber } = req.body; // Extract fields from request
 
-  // Ensure that at least one field to update is provided
-  if (!firstName && !lastName && !email && !password && !phoneNumber) {
+  // Validate ObjectId
+  if (!ObjectId.isValid(id)) {
+    return res.status(400).send('Invalid user ID format');
+  }
+
+  // Build update object only with provided fields
+  const updatedFields = {};
+
+  if (firstName !== undefined) updatedFields.firstName = firstName;
+  if (lastName !== undefined) updatedFields.lastName = lastName;
+  if (email !== undefined) updatedFields.email = email;
+  if (phoneNumber !== undefined) updatedFields.phoneNumber = phoneNumber;
+
+  // Handle password separately: hash if provided
+  if (password !== undefined) {
+    try {
+      const hashedPassword = await bcrypt.hash(password, saltRounds);
+      updatedFields.password = hashedPassword;
+    } catch (err) {
+      console.error('Error hashing password:', err);
+      return res.status(500).send('Error processing password');
+    }
+  }
+
+  // Ensure there's at least one field to update
+  if (Object.keys(updatedFields).length === 0) {
     return res.status(400).send('No fields provided for update');
   }
 
   try {
-    // Construct an object with the fields to update
-    const updatedUser = {};
+  const result = await usersCollection.updateOne(
+    { _id: new ObjectId(id) },
+    { $set: updatedFields }
+  );
 
-    if (firstName) updatedUser.firstName = firstName;
-    if (lastName) updatedUser.lastName = lastName;
-    if (email) updatedUser.email = email;
-    if (password) updatedUser.password = password;
-    if (phoneNumber) updatedUser.phoneNumber = phoneNumber;
+  if (result.matchedCount === 0) {
+    return res.status(404).send(`User with ID ${id} not found`);
+  }
 
-    // Update the user in the database
-    const result = await usersCollection.updateOne(
-      { _id: new ObjectId(id) },  // Find the user by ID
-      { $set: updatedUser }  // Set the updated fields
-    );
-
-    if (result.matchedCount === 0) {
-      return res.status(404).send(`User with ID ${id} not found`);
-    }
-
-    console.log('User updated:', result);
-    res.status(200).json({ message: 'User updated successfully' });
-
+  // Return the updated user object
+  const updatedUser = await usersCollection.findOne({ _id: new ObjectId(id) });
+  res.status(200).json(updatedUser);
   } catch (err) {
     console.error('Error updating user:', err);
     res.status(500).send('Error updating user');
+  }
+});
+
+app.post('/bookings', async (req, res) => {
+  const { event, pickDate, pickLocation, noOfGuests, customRequest } = req.body;
+
+  if (!event || !pickDate || !pickLocation || !noOfGuests) {
+    return res.status(400).send('Missing required booking fields');
+  }
+
+  const newBooking = {
+    event,
+    pickDate,
+    pickLocation,
+    noOfGuests,
+    customRequest,
+    createdAt: new Date()
+  };
+
+  try {
+    const result = await bookingsCollection.insertOne(newBooking);
+    res.status(201).json({ message: 'Booking created', id: result.insertedId });
+  } catch (err) {
+    console.error('Error creating booking:', err);
+    res.status(500).send('Error creating booking');
+  }
+});
+
+app.get('/bookings', async (req, res) => {
+  try {
+    const bookings = await bookingsCollection.find({}).toArray();
+    res.status(200).json(bookings);
+  } catch (err) {
+    console.error('Error fetching bookings:', err);
+    res.status(500).send('Error fetching bookings');
   }
 });
 
