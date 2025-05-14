@@ -29,14 +29,14 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/pp" />
+            android:src="@drawable/rr" />
 
         <TextView
             android:id="@+id/profileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="NAME"
+            android:text="Jhonrel Ardiente"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginHorizontal="24dp"
-        android:text="Passion, patience, and precision—three keys to mastering both life and code."
+        android:text="Opportunities don’t happen, you create them."
         android:textColor="@color/black"
         android:textSize="14sp"
         android:gravity="center"
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginHorizontal="24dp"
-        android:text="I am a dedicated developer who thrives on crafting intuitive and innovative solutions. My journey in tech is fueled by curiosity, creativity, and a strong desire to improve user experiences. Whether it's designing seamless UI/UX or tackling complex algorithms, I strive to make a meaningful impact through technology."
+        android:text="As a student at the University of Cebu, I am focused on back-end development and software engineering. I take pride in designing robust systems and ensuring seamless integration across platforms. My dedication lies in building scalable and efficient solutions that address real-world challenges."
         android:textColor="@color/black"
         android:textSize="12sp"
         android:justificationMode="inter_word"
@@ -134,7 +134,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginHorizontal="24dp"
-        android:text="• Mobile App Development (Android, Kotlin, Java)\n• UI/UX Design  Prototyping\n• IoT Integration  Smart Systems\n• API Development  Database Management\n"
+        android:text="• Back-End Development (Java, Python, Node.js)\n• RESTful APIs / Authentication\n• SQL / NoSQL Databases\n• Server / Cloud Integration\n"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:gravity="left"
@@ -150,22 +150,6 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
-
-        <ImageView
-            android:id="@+id/instagramIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginHorizontal="8dp"
-            android:contentDescription="Instagram Icon"
-            android:src="@drawable/ig" />
-
-        <ImageView
-            android:id="@+id/twitterIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginHorizontal="8dp"
-            android:contentDescription="Twitter Icon"
-            android:src="@drawable/twi" />
 
         <ImageView
             android:id="@+id/facebookIcon"

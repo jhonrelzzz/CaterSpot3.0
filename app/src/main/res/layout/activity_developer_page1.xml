@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="NAME"
+            android:text="James Ian Canete"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginHorizontal="24dp"
-        android:text="I am a dedicated developer who thrives on crafting intuitive and innovative solutions. My journey in tech is fueled by curiosity, creativity, and a strong desire to improve user experiences. Whether it's designing seamless UI/UX or tackling complex algorithms, I strive to make a meaningful impact through technology."
+        android:text="I'm an IT student at the University of Cebu with a strong passion for game development and computer hardware. My journey in technology is driven by curiosity and a desire to create immersive digital experiences. I enjoy exploring the intricacies of system servicing and aspire to innovate in the gaming industry."
         android:textColor="@color/black"
         android:textSize="12sp"
         android:justificationMode="inter_word"
@@ -150,22 +150,6 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
-
-        <ImageView
-            android:id="@+id/instagramIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginHorizontal="8dp"
-            android:contentDescription="Instagram Icon"
-            android:src="@drawable/ig" />
-
-        <ImageView
-            android:id="@+id/twitterIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginHorizontal="8dp"
-            android:contentDescription="Twitter Icon"
-            android:src="@drawable/twi" />
 
         <ImageView
             android:id="@+id/facebookIcon"

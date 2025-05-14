@@ -29,14 +29,14 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/pp" />
+            android:src="@drawable/jj" />
 
         <TextView
             android:id="@+id/profileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="NAME"
+            android:text="Ian Lance De La Cruz"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginHorizontal="24dp"
-        android:text="As a developer, I believe that technology should simplify lives. I enjoy working on projects that challenge my creativity and analytical skills, pushing me to learn and adapt constantly. Whether it's building apps, designing systems, or improving efficiency, I approach every challenge with enthusiasm and determination."
+        android:text="Currently pursuing my IT studies at the University of Cebu, I am deeply interested in game development and content creation. I believe in continuous learning and leveraging technology to craft engaging and meaningful user experiences. My goal is to merge creativity with technical skills to develop innovative solutions."
         android:textColor="@color/black"
         android:textSize="12sp"
         android:justificationMode="inter_word"
@@ -153,22 +153,6 @@
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
-
-        <ImageView
-            android:id="@+id/instagramIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginHorizontal="8dp"
-            android:contentDescription="Instagram Icon"
-            android:src="@drawable/ig" />
-
-        <ImageView
-            android:id="@+id/twitterIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginHorizontal="8dp"
-            android:contentDescription="Twitter Icon"
-            android:src="@drawable/twi" />
 
         <ImageView
             android:id="@+id/facebookIcon"

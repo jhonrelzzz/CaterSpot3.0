@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="NAME"
+            android:text="Rianel Lumbaca"
             android:textColor="@color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginHorizontal="24dp"
-        android:text="Passion, patience, and precision—three keys to mastering both life and code."
+        android:text="Bridging the gap between design and functionality."
         android:textColor="@color/black"
         android:textSize="14sp"
         android:gravity="center"
@@ -91,7 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginHorizontal="24dp"
-        android:text="I am a dedicated developer who thrives on crafting intuitive and innovative solutions. My journey in tech is fueled by curiosity, creativity, and a strong desire to improve user experiences. Whether it's designing seamless UI/UX or tackling complex algorithms, I strive to make a meaningful impact through technology."
+        android:text="I am a full-stack developer passionate about bridging the gap between design and functionality. My expertise spans both front-end and back-end technologies, allowing me to create comprehensive and user-centric applications. I strive to deliver solutions that are not only functional but also aesthetically pleasing."
         android:textColor="@color/black"
         android:textSize="12sp"
         android:justificationMode="inter_word"
@@ -134,7 +134,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginHorizontal="24dp"
-        android:text="• Mobile App Development (Android, Kotlin, Java)\n• UI/UX Design  Prototyping\n• IoT Integration  Smart Systems\n• API Development  Database Management\n"
+        android:text="• Full-Stack Development (MERN/MEAN Stack)
+
+\n• CI/CD Pipelines / Version Control\n• Database / API Integration\n• Scalable App Architecture\n"
         android:textColor="@color/black"
         android:textSize="14sp"
         android:gravity="left"
@@ -151,21 +153,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
 
-        <ImageView
-            android:id="@+id/instagramIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginHorizontal="8dp"
-            android:contentDescription="Instagram Icon"
-            android:src="@drawable/ig" />
-
-        <ImageView
-            android:id="@+id/twitterIcon"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginHorizontal="8dp"
-            android:contentDescription="Twitter Icon"
-            android:src="@drawable/twi" />
 
         <ImageView
             android:id="@+id/facebookIcon"

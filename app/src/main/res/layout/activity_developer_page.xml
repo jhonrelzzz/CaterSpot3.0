@@ -74,7 +74,7 @@
                     android:layout_below="@id/dev1Name"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:text="Enthusiastic developer passionate about UI/UX design."
+                    android:text="Believe you can and you're halfway there."
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
             </RelativeLayout>
@@ -94,7 +94,7 @@
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/cir"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/pp" />
+                    android:src="@drawable/jj" />
 
                 <TextView
                     android:id="@+id/dev2Name"
@@ -115,7 +115,7 @@
                     android:layout_below="@id/dev2Name"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:text="Enthusiastic developer passionate about UI/UX design."
+                    android:text="Just one small positive thought in the morning can change your whole day."
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
             </RelativeLayout>
@@ -135,7 +135,7 @@
                     android:layout_centerHorizontal="true"
                     android:background="@drawable/cir"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/pp" />
+                    android:src="@drawable/rr" />
 
                 <TextView
                     android:id="@+id/dev3Name"
@@ -144,7 +144,7 @@
                     android:layout_below="@id/dev3Image"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="10dp"
-                    android:text="Dev 4 Name"
+                    android:text="Jhonrel Ardiente"
                     android:textColor="@android:color/white"
                     android:textSize="22sp"
                     android:textStyle="bold" />
@@ -156,7 +156,7 @@
                     android:layout_below="@id/dev3Name"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:text="Enthusiastic developer passionate about UI/UX design."
+                    android:text="Opportunities don’t happen, you create them."
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
             </RelativeLayout>
@@ -197,7 +197,7 @@
                     android:layout_below="@id/dev4Name"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="5dp"
-                    android:text="Enthusiastic developer passionate about UI/UX design."
+                    android:text="Dreams don’t work unless you do."
                     android:textColor="@android:color/white"
                     android:textSize="16sp" />
             </RelativeLayout>
