@@ -4,8 +4,11 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.util.Patterns
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
+import com.intprog32.caterspot30.Data.UserData
 
 
 class EditProfileActivity : Activity() {
@@ -37,13 +40,41 @@ class EditProfileActivity : Activity() {
 
         val savebutton = findViewById<Button>(R.id.saveButton)
         savebutton.setOnClickListener{
+            val firstname = fname.text.toString()
+            val lastname = lname.text.toString()
+            val email = emails.text.toString()
+
+            if(firstname.isEmpty()){
+                Toast.makeText(this, "First Name is required", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (lastname.isEmpty()) {
+                Toast.makeText(this, "Last name is required", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(this, "Invalid email format", Toast.LENGTH_SHORT).show()
+                return@setOnClickListener
+            }
+            val user = UserData(
+                firstName = firstname,
+                lastName = lastname,
+                email = email,
+                password = "",
+                phoneNumber = ""
+            )
+
             startActivity(
                 Intent(this,UserInformationActivity::class.java).apply {
-                    putExtra("firstname", fname.text.toString())
-                    putExtra("lastname", lname.text.toString())
-                    putExtra("email", emails.text.toString())
+                    putExtra("user_data", user)
+
+                    putExtra("firstname", firstname)
+                    putExtra("lastname", lastname)
+                    putExtra("email", email)
                 }
             )
+
+
         }
 
         val cancelbutton = findViewById<Button>(R.id.cancelButton)
@@ -53,5 +84,6 @@ class EditProfileActivity : Activity() {
             )
         }
     }
+
 
 }

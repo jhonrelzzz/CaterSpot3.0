@@ -19,8 +19,8 @@ class SettingsActivity : Activity() {
 
         // Back button
         val back = findViewById<ImageView>(R.id.back_button)
-        val home = findViewById<ImageView>(R.id.home_nav)
-        val book = findViewById<ImageView>(R.id.book_nav)
+        val home = findViewById<ImageView>(R.id.homeimagebutton)
+        val book = findViewById<ImageView>(R.id.booking)
         val profile = findViewById<Button>(R.id.profile_buttons)
         val logoutButton = findViewById<Button>(R.id.logout_Button)
 

@@ -8,8 +8,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
+import com.intprog32.caterspot30.Data.UserData
 
 
 class ProfileActivity : Activity() {
@@ -28,7 +27,14 @@ class ProfileActivity : Activity() {
         val eTextView = findViewById<TextView>(R.id.emailtextview)
         profileImageView = findViewById(R.id.ProfileImage)
         selectImageButton = findViewById(R.id.ChangeImageButton)
+        val userData = intent.getParcelableExtra<UserData>("user_data")
 
+        userData?.let{
+            firstTextView.text = it.firstName
+            lastTextView.text = it.lastName
+            eTextView.text = it.email
+
+        }
 
         intent?.let {
             it.getStringExtra("firstname")?.let { firstname ->
